@@ -3,6 +3,19 @@
 // Copyright (c) 2010 Doug McInnes
 //
 
+function resizeCanvas() {
+  var canvas = $("#canvas");
+
+  canvas.css({
+    border: 0,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+}
+
 KEY_CODES = {
   32: 'space',
   37: 'left',
@@ -1008,6 +1021,10 @@ $(function () {
   var canvas = $("#canvas");
   Game.canvasWidth  = canvas.width();
   Game.canvasHeight = canvas.height();
+
+  resizeCanvas();
+
+  window.addEventListener('resize', resizeCanvas);
 
   var context = canvas[0].getContext("2d");
 
